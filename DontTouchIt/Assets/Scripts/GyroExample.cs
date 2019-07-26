@@ -11,8 +11,13 @@ public class GyroExample : MonoBehaviour
     // with appropriate colors, red, green, blue, etc
     public Texture[] labels;
 
+    private Gyroscope phoneGyro;
+
     void Start()
     {
+        phoneGyro = Input.gyro;
+        phoneGyro.enabled = true;
+
         // make camera solid colour and based at the origin
         GetComponent<Camera>().backgroundColor = new Color(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f);
         GetComponent<Camera>().transform.position = new Vector3(0, 0, 0);
