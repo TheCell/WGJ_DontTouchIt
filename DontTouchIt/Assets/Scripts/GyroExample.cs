@@ -19,9 +19,9 @@ public class GyroExample : MonoBehaviour
         phoneGyro.enabled = true;
 
         // make camera solid colour and based at the origin
-        GetComponent<Camera>().backgroundColor = new Color(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f);
-        GetComponent<Camera>().transform.position = new Vector3(0, 0, 0);
-        GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
+        //GetComponent<Camera>().backgroundColor = new Color(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f);
+        //GetComponent<Camera>().transform.position = new Vector3(0, 0, 0);
+        //GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;
 
         // create the six quads forming the sides of a cube
         GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
@@ -75,6 +75,14 @@ public class GyroExample : MonoBehaviour
     // Make the necessary change to the camera.
     void GyroModifyCamera()
     {
+        /*
+        Quaternion gyroRotation = GyroToUnity(Input.gyro.attitude);
+        Quaternion objectRotation = transform.rotation;
+        objectRotation = Quaternion.Euler(objectRotation.eulerAngles.x, gyroRotation.eulerAngles.y, objectRotation.eulerAngles.z);
+        transform.rotation = objectRotation;
+        transform.rotation = gyroRotation;
+        */
+
         transform.rotation = GyroToUnity(Input.gyro.attitude);
     }
 
