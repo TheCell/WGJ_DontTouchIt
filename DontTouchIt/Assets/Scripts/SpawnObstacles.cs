@@ -7,7 +7,7 @@ public class SpawnObstacles : MonoBehaviour
     [SerializeField] private GameObject[] obstacles;
     [SerializeField] private float spawnRadius = 30f;
     [SerializeField] private GameObject player;
-    private int gridsize = 4;
+    private int gridsize = 2;
     private ArrayList obstacleList = new ArrayList();
 
     private struct Obstacle
@@ -37,20 +37,35 @@ public class SpawnObstacles : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     private void Update()
     {
         int playerX = (int)(Mathf.Floor(player.transform.position.x / gridsize) * gridsize);
         int playerZ = (int)(Mathf.Floor(player.transform.position.z / gridsize) * gridsize);
-        //Debug.Log("float " + Mathf.PerlinNoise(player.transform.position.x, player.transform.position.z));
-        //Debug.Log("int " + Mathf.PerlinNoise(playerX, playerZ));
-        CheckpositionAndSpawn(playerX, playerZ);
+        Vector2 playerpos = new Vector2(playerX, playerZ);
+        FillRadiusWithObstacles(playerpos);
+    }
+
+    private void FillRadiusWithObstacles(Vector2 playerXZ)
+    {
+        int gridPointsInCircle = (int) ((spawnRadius * 2) / gridsize);
+        int pointsInRadius = gridPointsInCircle / 2;
+
+        for (int y = 0; y < gridPointsInCircle; y++)
+        {
+            for (int x = 0; x < gridPointsInCircle; x++)
+            {
+                Vector2 spawnPos = new Vector2(playerXZ.x + (x * gridsize) - pointsInRadius * gridsize, playerXZ.y + (y * gridsize) - pointsInRadius * gridsize);
+                //CheckpositionAndSpawn((int)spawnPos.x, (int)spawnPos.y);
+
+                if (Vector2.Distance(playerXZ, spawnPos) < spawnRadius)
+                {
+                    CheckpositionAndSpawn((int)spawnPos.x, (int)spawnPos.y);
+                }
+            }
+        }
+
+        RemoveUnused(playerXZ);
     }
 
     private void CheckpositionAndSpawn(int x, int z)
@@ -61,20 +76,47 @@ public class SpawnObstacles : MonoBehaviour
 
         if (!obstacleList.Contains(currentObstacle))
         {
-            Debug.Log("not yet in list!");
-            currentObstacle.obstacle = Instantiate(RandomObstacle());
+            GameObject randomObj = RandomObstacle();
+            currentObstacle.obstacle = Instantiate(randomObj);
             currentObstacle.obstacle.transform.position = new Vector3(currentObstacle.position.x, 0f, currentObstacle.position.y);
             obstacleList.Add(currentObstacle);
         }
     }
 
-    private void RemoveUnused()
+    private void RemoveUnused(Vector2 playerPos)
     {
+        ArrayList elementsToRemove = new ArrayList();
+        IEnumerator obstacleIterator = obstacleList.GetEnumerator();
 
+        while (obstacleIterator.MoveNext())
+        {
+            Obstacle currentObst = (Obstacle)obstacleIterator.Current;
+            if (Vector2.Distance(playerPos, currentObst.position) > spawnRadius)
+            {
+                elementsToRemove.Add(currentObst);
+            }
+        }
+
+        foreach(Obstacle outOfRangeObstacle in elementsToRemove)
+        {
+            obstacleList.Remove(outOfRangeObstacle);
+            Destroy(outOfRangeObstacle.obstacle);
+        }
     }
 
     private GameObject RandomObstacle()
     {
-        return obstacles[Random.Range(0, obstacles.Length - 1)];
+        GameObject gameObj;
+
+        if (Random.Range(0f, 1f) > 0.9)
+        {
+            gameObj = obstacles[Random.Range(0, obstacles.Length)];
+        }
+        else
+        {
+            gameObj = new GameObject();
+        }
+
+        return gameObj;
     }
 }

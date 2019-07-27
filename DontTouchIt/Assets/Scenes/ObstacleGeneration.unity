@@ -387,6 +387,7 @@ MonoBehaviour:
   obstacles:
   - {fileID: 2547463664810743694, guid: 003230809880af44f967424f96113bb1, type: 3}
   - {fileID: 1198381714446180626, guid: 3d5fa0052fe29164486761ce7457adaa, type: 3}
+  - {fileID: 7597861683043690912, guid: e2fa2bfe30b648a4984451ef57c5555c, type: 3}
   spawnRadius: 30
   player: {fileID: 194446903}
 --- !u!1 &1339888973
