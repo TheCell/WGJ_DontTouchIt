@@ -78,6 +78,7 @@ public class SpawnObstacles : MonoBehaviour
         {
             GameObject randomObj = RandomObstacle();
             currentObstacle.obstacle = Instantiate(randomObj);
+            currentObstacle.obstacle.transform.parent = this.gameObject.transform;
             currentObstacle.obstacle.transform.position = new Vector3(currentObstacle.position.x, 0f, currentObstacle.position.y);
             obstacleList.Add(currentObstacle);
         }
@@ -117,6 +118,7 @@ public class SpawnObstacles : MonoBehaviour
             gameObj = new GameObject();
         }
 
+        gameObj.transform.parent = this.gameObject.transform;
         return gameObj;
     }
 }

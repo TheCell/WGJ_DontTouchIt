@@ -5,6 +5,7 @@ using UnityEngine;
 public class Walking : MonoBehaviour
 {
     [SerializeField] private float movementspeed;
+    [SerializeField] private float movementspeedMultiplier;
     [SerializeField] private bool isAutowalking;
 
     // Update is called once per frame
@@ -16,6 +17,8 @@ public class Walking : MonoBehaviour
             planeMovement.y = 0f;
             planeMovement = planeMovement.normalized;
             transform.Translate(planeMovement * movementspeed * Time.deltaTime, Space.World);
+
+            movementspeed += Time.deltaTime * movementspeedMultiplier;
         }
     }
 }
