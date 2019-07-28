@@ -15,7 +15,7 @@ public class Walking : MonoBehaviour
             Vector3 planeMovement = transform.forward;
             planeMovement.y = 0f;
             planeMovement = planeMovement.normalized;
-            transform.Translate(planeMovement * movementspeed * Time.deltaTime);
+            transform.Translate(planeMovement * movementspeed * Time.deltaTime, Space.World);
         }
     }
 }
