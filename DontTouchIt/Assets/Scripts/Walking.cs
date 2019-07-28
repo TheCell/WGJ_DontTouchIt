@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Walking : MonoBehaviour
 {
-
     [SerializeField] private float movementspeed;
+    [SerializeField] private bool isAutowalking;
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        Vector3 planeMovement = transform.forward;
-        planeMovement.x = 0f;
-        planeMovement = planeMovement.normalized;
-        transform.Translate(planeMovement * movementspeed * Time.deltaTime);
-        */
+        if (isAutowalking)
+        {
+            Vector3 planeMovement = transform.forward;
+            planeMovement.y = 0f;
+            planeMovement = planeMovement.normalized;
+            transform.Translate(planeMovement * movementspeed * Time.deltaTime);
+        }
     }
 }
