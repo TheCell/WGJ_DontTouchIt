@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5091aec56de907440ad91a6d7c7199c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumTimeBetweenStains: 2
+  minimumTimeBetweenStains: 0.1
   obstructions:
   - {fileID: 221137770065167099, guid: f152c5639e5dd0444bac9529890cd192, type: 3}
   - {fileID: 7529339764639015953, guid: 451a5d9d291928d448cf4cdd91c70189, type: 3}

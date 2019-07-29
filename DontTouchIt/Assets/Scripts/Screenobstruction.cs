@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Screenobstruction : MonoBehaviour
 {
-    public float minimumTimeBetweenStains = 2f;
+    public float minimumTimeBetweenStains = 0.1f;
 
     [SerializeField] private GameObject[] obstructions;
     private ArrayList screenobstructions;
@@ -34,14 +34,16 @@ public class Screenobstruction : MonoBehaviour
                 Touch touch = Input.GetTouch(i);
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    CleanScreenAt(touch.position);
+                    CleanScreenAt(touch);
                 }
             }
         }
     }
 
-    private void CleanScreenAt(Vector2 position)
+    private void CleanScreenAt(Touch touch)
     {
+        Vector2 position = touch.position;
+        Vector2 startTouch = touch.position - touch.deltaPosition;
         IEnumerator obstructionEnumerator = screenobstructions.GetEnumerator();
         ArrayList elementsToRemove = new ArrayList();
 
@@ -51,7 +53,8 @@ public class Screenobstruction : MonoBehaviour
             Vector2 offsetFromMid = new Vector2(Screen.currentResolution.width / 2, Screen.currentResolution.height / 2);
             RectTransform rectTransform = currentObstruction.GetComponent<RectTransform>();
             Vector3 dirtPos = rectTransform.anchoredPosition + offsetFromMid;
-            if (Vector2.Distance(position, dirtPos) < 100f)
+            // improve on this for better experience
+            if (Vector2.Distance(position, dirtPos) < 50f || Vector2.Distance(startTouch, dirtPos) < 50f)
             {
                 elementsToRemove.Add(currentObstruction);
             }
@@ -78,6 +81,7 @@ public class Screenobstruction : MonoBehaviour
         GameObject obstruction = Instantiate(screenImage);
         RectTransform rectTransform = obstruction.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = position;
+        rectTransform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         obstruction.transform.SetParent(displayCanvas.transform);
         screenobstructions.Add(obstruction);
 
