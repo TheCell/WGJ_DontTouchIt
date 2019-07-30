@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32425264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.26, z: -5}
+  m_LocalPosition: {x: 0, y: 1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 194446907}
@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 194446908}
   - component: {fileID: 194446909}
   - component: {fileID: 194446910}
+  - component: {fileID: 194446911}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -514,6 +515,19 @@ MonoBehaviour:
   movementspeed: 5
   movementspeedMultiplier: 0.05
   isAutowalking: 1
+--- !u!114 &194446911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194446903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f552aba7fbe7f234ea410750f371fa6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMouseRotation: 0
 --- !u!1 &222013477
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,9 +701,9 @@ MonoBehaviour:
   - {fileID: 9217929173862546422, guid: 7dfc33eda91a09347a85130482acce83, type: 3}
   - {fileID: 8233324112721758532, guid: bbdb43c02d320194d8371b9f21f86d36, type: 3}
   - {fileID: 2034313346704916769, guid: 32a89c0fc6f037b418b5c816ae4642c7, type: 3}
-  - {fileID: 100004, guid: 21230a74458ba4d43b5c3515ca29b87c, type: 3}
-  - {fileID: 100004, guid: 5fe455014e86a974586c202e933096ae, type: 3}
-  - {fileID: 100004, guid: 1b9a7f29ee483124896fe9e2d19a50ba, type: 3}
+  - {fileID: 4562494664652121493, guid: bfeef4ae3871f7a41becc2a5999295a1, type: 3}
+  - {fileID: 6759167224306909403, guid: 458d7577262cd12489b502767b97bd35, type: 3}
+  - {fileID: 1566552302367309279, guid: f9e7224f88781054c82e3234e1cdfec3, type: 3}
   spawnRadius: 30
   player: {fileID: 194446903}
 --- !u!1 &1095545495

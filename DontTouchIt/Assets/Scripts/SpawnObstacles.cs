@@ -111,7 +111,7 @@ public class SpawnObstacles : MonoBehaviour
 
         if (Random.Range(0f, 1f) > 0.9)
         {
-            gameObj = obstacles[Random.Range(0, obstacles.Length)];
+            gameObj = Instantiate(obstacles[Random.Range(0, obstacles.Length)]);
         }
         else
         {

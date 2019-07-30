@@ -1,5 +1,30 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &4572281646744856479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034313346704916771}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2644, y: 2.25, z: 1.287}
+  m_Center: {x: -0.6322, y: 1.125, z: -0.6435}
+--- !u!114 &3589572103649464433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034313346704916771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9e278458ca0614f8d16eb22204bd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2034313346704951171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +34,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: ceb5dc489a3122b4c8ea890bf1f45015, type: 3}
       propertyPath: m_Name
-      value: Rock6
+      value: Rock6 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ceb5dc489a3122b4c8ea890bf1f45015, type: 3}
       propertyPath: m_LocalPosition.x
@@ -57,3 +82,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb5dc489a3122b4c8ea890bf1f45015, type: 3}
+--- !u!1 &2034313346704916771 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ceb5dc489a3122b4c8ea890bf1f45015,
+    type: 3}
+  m_PrefabInstance: {fileID: 2034313346704951171}
+  m_PrefabAsset: {fileID: 0}

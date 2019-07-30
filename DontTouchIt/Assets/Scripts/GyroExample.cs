@@ -12,11 +12,13 @@ public class GyroExample : MonoBehaviour
     public Texture[] labels;
 
     private Gyroscope phoneGyro;
+    private Quaternion correctionQuaternion;
 
     void Start()
     {
         phoneGyro = Input.gyro;
         phoneGyro.enabled = true;
+        correctionQuaternion = Quaternion.Euler(90f, 0f, 0f);
 
         // make camera solid colour and based at the origin
         //GetComponent<Camera>().backgroundColor = new Color(49.0f / 255.0f, 77.0f / 255.0f, 121.0f / 255.0f);
@@ -82,8 +84,8 @@ public class GyroExample : MonoBehaviour
         transform.rotation = objectRotation;
         transform.rotation = gyroRotation;
         */
-
-        transform.rotation = GyroToUnity(Input.gyro.attitude);
+        Quaternion gyroQuaternion = GyroToUnity(Input.gyro.attitude);
+        transform.rotation = correctionQuaternion * gyroQuaternion;
     }
 
     private static Quaternion GyroToUnity(Quaternion q)
