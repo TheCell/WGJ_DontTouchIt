@@ -39,10 +39,6 @@ public class PlayerRotation : MonoBehaviour
         // rotate coordinate system 90 degrees. Correction Quaternion has to come first
         Quaternion calculatedRotation = correctionQuaternion * gyroQuaternion;
         transform.rotation = calculatedRotation;
-        /*
-        Quaternion alignUP = Quaternion.FromToRotation(calculatedRotation.eulerAngles, Vector3.up);
-        transform.rotation = alignUP * calculatedRotation;
-        */
     }
 
     private static Quaternion GyroToUnity(Quaternion q)
